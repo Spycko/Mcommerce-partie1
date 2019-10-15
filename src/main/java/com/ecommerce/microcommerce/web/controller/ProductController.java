@@ -109,6 +109,14 @@ public class ProductController {
         return new MappingJacksonValue(listMarge);
     }
 
+    @GetMapping (value = "/TrierProduits")
+    public MappingJacksonValue trierProduitsParOrdreAlphabetique()
+    {
+        Iterable<Product> produits = productDao.findAllByOrderByNomAsc();
+
+        return new MappingJacksonValue(produits);
+    }
+
 
     //Pour les tests
     @GetMapping(value = "test/produits/{prix}")
